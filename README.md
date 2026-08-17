@@ -26,13 +26,27 @@
 
 ## 🧰 Tech Stack
 
-**Frontend** — ![HTML5](https://skillicons.dev/icons?i=html) ![CSS3](https://skillicons.dev/icons?i=css) ![JavaScript](https://skillicons.dev/icons?i=js) ![React](https://skillicons.dev/icons?i=react) ![Vite](https://skillicons.dev/icons?i=vite) ![Tailwind CSS](https://skillicons.dev/icons?i=tailwind) ![SCSS](https://skillicons.dev/icons?i=sass) ![Framer Motion](https://skillicons.dev/icons?i=framer) ![Three.js](https://skillicons.dev/icons?i=threejs)
-
-**Backend & Database** — ![Node.js](https://skillicons.dev/icons?i=nodejs) ![Express](https://skillicons.dev/icons?i=express) ![MongoDB](https://skillicons.dev/icons?i=mongodb)
-
-**Tools & Deployment** — ![Git](https://skillicons.dev/icons?i=git) ![VS Code](https://skillicons.dev/icons?i=vscode) ![Postman](https://skillicons.dev/icons?i=postman) ![Vercel](https://skillicons.dev/icons?i=vercel) ![Render](https://skillicons.dev/icons?i=render)
-
-*Also working with:* React Router · Axios · Socket.IO · GSAP · Lenis · Recharts · Mongoose · JWT · bcrypt
+<table align="center" width="100%">
+  <tr>
+    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;">
+      <b>🎨 Frontend</b>&nbsp;<span style="font-size:13px;">— responsive, animated, component-driven</span><br/><br/>
+      <img src="https://skillicons.dev/icons?i=html,css,js,react,vite,tailwind,sass,framer,threejs&perline=9" alt="Frontend stack" /><br/><br/>
+      <code style="font-size:12px;">React Router · Axios · GSAP · Lenis · Recharts</code>
+    </td>
+  </tr>
+  <tr>
+    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;">
+      <b>🛠️ Backend &amp; Database</b>&nbsp;<span style="font-size:13px;">— REST APIs · real-time · auth</span><br/><br/>
+      <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb&perline=3" alt="Backend & database stack" /><br/><br/>
+      <code style="font-size:12px;">Mongoose · JWT · Socket.IO · bcrypt</code>
+    </td>
+    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;width:50%;">
+      <b>🚀 Tools &amp; Deployment</b>&nbsp;<span style="font-size:13px;">— git-first · shipped to production</span><br/><br/>
+      <img src="https://skillicons.dev/icons?i=git,vscode,postman,vercel,render&perline=5" alt="Tools & deployment stack" /><br/><br/>
+      <code style="font-size:12px;">Vite builds · ESLint / Oxlint · Blueprint deploys</code>
+    </td>
+  </tr>
+</table>
 
 ---
 

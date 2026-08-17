@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Ankitjha9732/Ankitjha9732/main/assets/ui-assembler.svg" alt="Ankit Jha — UI components assembling into a live interface" width="720" />
+<img src="https://raw.githubusercontent.com/Ankitjha9732/Ankitjha9732/main/assets/frontend-pipeline.svg" alt="Ankit Jha — frontend pipeline (design → react → api → data → deploy)" width="720" />
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=34&pause=200000&color=8B5CF6&center=true&vCenter=true&width=470&lines=Ankit+Jha&stopSentencesDisplayedOnComplete=true" alt="Ankit Jha" />
 <h3>UI/UX-focused Frontend Developer · React · MERN Full-Stack</h3>

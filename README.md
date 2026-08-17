@@ -73,7 +73,7 @@
   </tr>
 </table>
 
-*More:* [Responsive SCSS landing page](https://github.com/Ankitjha9732/RESPONSIVE-WEBPAGE) — componentized SCSS architecture
+*More:* [Responsive SCSS landing page](https://github.com/Ankitjha9732/RESPONSIVE-WEBPAGE) — responsive SCSS with design tokens & breakpoints
 
 ---
 

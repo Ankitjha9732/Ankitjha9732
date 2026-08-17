@@ -1,0 +1,38 @@
+# OPTIONAL — richer stats card with top languages.
+# The github-readme-stats.vercel.app service is currently down (503), which is why
+# profile stats broke. The README now uses shielded static badges (reliable).
+# For a full animated stats card + top languages, enable this workflow:
+#
+#   1. Open https://github.com/settings/tokens → "Tokens (classic)" → Generate new token
+#      Scopes: repo, read:user, user:follow   (read-only is fine)
+#   2. In your profile repo:  Settings → Secrets and variables → Actions → New repository secret
+#      Name: METRICS_TOKEN  Value: <the token>
+#   3. Add this file to .github/workflows/metrics.yml in your Ankitjha9732 repo.
+#      The Action will generate github-metrics.svg (auto-committed) every day.
+#   4. In README, replace the "GitHub Stats" shields row with:
+#      <img src="https://raw.githubusercontent.com/Ankitjha9732/Ankitjha9732/main/github-metrics.svg" alt="GitHub metrics" />
+
+name: Metrics
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ secrets.METRICS_TOKEN }}
+          base: header, activity, community, repositories, metadata
+          config_timezone: Asia/Kolkata
+          plugin_languages: yes
+          plugin_languages_details: bytes-size, percentage
+          plugin_languages_limit: 8
+          plugin_languages_threshold: 2%

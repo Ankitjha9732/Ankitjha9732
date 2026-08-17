@@ -46,9 +46,9 @@
     </td>
   </tr>
   <tr>
-    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;">
+    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;width:50%;">
       <b>🛠️ Backend &amp; Database</b>&nbsp;<span style="font-size:13px;">— REST APIs · real-time · auth</span><br/><br/>
-      <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb&perline=3" alt="Backend & database stack" /><br/><br/>
+      <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,socketio&perline=4" alt="Backend & database stack" /><br/><br/>
       <code style="font-size:12px;">Mongoose · JWT · Socket.IO · bcrypt</code>
     </td>
     <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;width:50%;">

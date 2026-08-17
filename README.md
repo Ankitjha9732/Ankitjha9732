@@ -41,20 +41,20 @@
   <tr>
     <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;">
       <b>🎨 Frontend</b>&nbsp;<span style="font-size:13px;">— responsive, animated, component-driven</span><br/><br/>
-      <img src="https://skillicons.dev/icons?i=html,css,js,react,vite,tailwind,sass,framer,threejs&perline=9" alt="Frontend stack" /><br/><br/>
-      <code style="font-size:12px;">React Router · Axios · Framer Motion · GSAP · Lenis · Recharts</code>
+      <img src="https://skillicons.dev/icons?i=html,css,js,react,vite,tailwind,sass,threejs&perline=8" alt="Frontend stack" /><br/><br/>
+      <code style="font-size:12px;">Framer Motion · React Router · Axios · GSAP · Lenis · Recharts</code>
     </td>
   </tr>
   <tr>
     <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;width:50%;">
       <b>🛠️ Backend &amp; Database</b>&nbsp;<span style="font-size:13px;">— REST APIs · real-time · auth</span><br/><br/>
-      <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,socketio&perline=4" alt="Backend & database stack" /><br/><br/>
-      <code style="font-size:12px;">Mongoose · JWT · Socket.IO · bcrypt</code>
+      <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb&perline=3" alt="Backend & database stack" /><br/><br/>
+      <code style="font-size:12px;">Socket.IO · Mongoose · JWT · bcrypt</code>
     </td>
     <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;width:50%;">
       <b>🚀 Tools &amp; Deployment</b>&nbsp;<span style="font-size:13px;">— git-first · shipped to production</span><br/><br/>
-      <img src="https://skillicons.dev/icons?i=git,vscode,postman,vercel,render&perline=5" alt="Tools & deployment stack" /><br/><br/>
-      <code style="font-size:12px;">Vite builds · ESLint / Oxlint · Postman · Lighthouse checks</code>
+      <img src="https://skillicons.dev/icons?i=git,vscode,postman,vercel&perline=4" alt="Tools & deployment stack" /><br/><br/>
+      <code style="font-size:12px;">Vite builds · ESLint / Oxlint · Render deploys · Lighthouse checks</code>
     </td>
   </tr>
 </table>

@@ -117,10 +117,7 @@
 
 <div align="center">
 
-<a href="https://github.com/Ankitjha9732"><img src="https://img.shields.io/github/followers/Ankitjha9732?style=for-the-badge&logo=github&color=8B5CF6" alt="Followers" /></a>
-<a href="https://github.com/Ankitjha9732"><img src="https://img.shields.io/github/stars/Ankitjha9732?style=for-the-badge&logo=star&logoColor=white&color=8B5CF6" alt="Stars" /></a>
-<a href="https://github.com/Ankitjha9732?tab=repositories"><img src="https://img.shields.io/github/repos/Ankitjha9732?style=for-the-badge&logo=git&logoColor=white&color=8B5CF6" alt="Repositories" /></a>
-<a href="https://github.com/Ankitjha9732/Ankitjha9732"><img src="https://img.shields.io/github/last-commit/Ankitjha9732/Ankitjha9732?style=for-the-badge&logo=github&color=8B5CF6" alt="Last commit" /></a>
+<a href="https://github.com/Ankitjha9732"><img src="https://raw.githubusercontent.com/Ankitjha9732/Ankitjha9732/main/github-metrics.svg" alt="GitHub metrics" /></a>
 
 </div>
 

@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/Ankitjha9732/Ankitjha9732/main/assets/frontend-pipeline.svg" alt="Ankit Jha — frontend pipeline (design → react → api → data → deploy)" width="720" />
 
-<h1>👨‍💻 Ankit Jha</h1>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=34&pause=200000&color=8B5CF6&center=true&vCenter=true&width=470&lines=Ankit+Jha&stopSentencesDisplayedOnComplete=true" alt="Ankit Jha" />
 <h3>UI/UX-focused Frontend Developer · React · MERN Full-Stack</h3>
 <p>I design and build interactive, responsive web experiences — backed by clean React architecture and a real full-stack foundation.</p>
 
@@ -16,11 +16,22 @@
 
 ## ✦ About Me
 
-- 🎨 **UI/UX-focused Frontend Developer** — obsessive about motion, spacing, and the details that make interfaces feel good.
-- ⚛️ **React Developer** — component-driven builds with Vite, Tailwind CSS, and animation libraries (GSAP · Framer Motion · Three.js).
-- 🛠️ **Full-Stack (MERN)** — Express + MongoDB backends, REST APIs, JWT auth, and real-time features with Socket.IO.
-- 🎓 **B.Tech CSE, specializing in AI & ML** — my current focus is frontend, UI/UX, and modern web development.
-- 🚀 Proud of shipping **production-style, deployed** projects — not tutorials.
+<table align="center" width="100%">
+  <tr>
+    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:20px;vertical-align:middle;width:110px;">
+      <img src="https://avatars.githubusercontent.com/u/198300882?v=4" width="96" alt="Ankit Jha" />
+    </td>
+    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:20px;vertical-align:middle;">
+      <b>Frontend developer with a designer's eye and a full-stack toolkit.</b>
+      <br/><br/>
+      I turn ideas into polished, responsive web experiences — obsessing over motion, spacing, and the details that make interfaces feel good, while shipping real products with the MERN stack: Express + MongoDB APIs, JWT auth, and real-time features.
+      <br/><br/>
+      🎓 B.Tech CSE (AI &amp; ML) · ⚛️ React · 🎨 UI/UX · 🚀 Full-Stack
+      <br/>
+      👋 Open to frontend/full-stack roles, internships &amp; collaborations.
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -104,10 +115,14 @@
 
 ## 📊 GitHub Stats
 
-<p align="center">
-  <img height="170em" src="https://github-readme-stats.vercel.app/api?username=Ankitjha9732&show_icons=true&theme=radical&include_all_commits=true&hide_border=true" alt="GitHub stats" />
-  <img height="170em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ankitjha9732&layout=compact&langs_count=6&theme=radical&hide_border=true" alt="Top languages" />
-</p>
+<div align="center">
+
+<a href="https://github.com/Ankitjha9732"><img src="https://img.shields.io/github/followers/Ankitjha9732?style=for-the-badge&logo=github&color=8B5CF6" alt="Followers" /></a>
+<a href="https://github.com/Ankitjha9732"><img src="https://img.shields.io/github/stars/Ankitjha9732?style=for-the-badge&logo=star&logoColor=white&color=8B5CF6" alt="Stars" /></a>
+<a href="https://github.com/Ankitjha9732?tab=repositories"><img src="https://img.shields.io/github/repos/Ankitjha9732?style=for-the-badge&logo=git&logoColor=white&color=8B5CF6" alt="Repositories" /></a>
+<a href="https://github.com/Ankitjha9732/Ankitjha9732"><img src="https://img.shields.io/github/last-commit/Ankitjha9732/Ankitjha9732?style=for-the-badge&logo=github&color=8B5CF6" alt="Last commit" /></a>
+
+</div>
 
 ---
 

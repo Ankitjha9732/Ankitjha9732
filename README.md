@@ -38,51 +38,42 @@
 
 ## 🚀 Featured Projects
 
-### 📚 Syllabus Tracker — *full-stack MERN learning platform*
+<table align="center" width="100%">
+  <tr>
+    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;width:50%;">
+      <b>📚 Syllabus Tracker</b>&nbsp;<span style="font-size:12px;">— <i>full-stack MERN platform</i></span><br/>
+      <span style="font-size:13px;">Modules → topics → subtopics with live progress, streaks, charts &amp; a GitHub-style heatmap. Progress computed on the backend; JWT-secured.</span><br/><br/>
+      <code style="font-size:12px;">React · Express · MongoDB · JWT</code><br/><br/>
+      <a href="https://syllabus-tracker-beta.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-8B5CF6?style=flat-square&logo=vercel&logoColor=white" alt="Live demo" /></a>
+      <a href="https://github.com/Ankitjha9732/SYLLABUS-TRACKER"><img src="https://img.shields.io/badge/Code-18181b?style=flat-square&logo=github&logoColor=white" alt="Repository" /></a>
+    </td>
+    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;width:50%;">
+      <b>🍽️ RestroOrder</b>&nbsp;<span style="font-size:12px;">— <i>QR restaurant ordering</i></span><br/>
+      <span style="font-size:13px;">QR table ordering, menu &amp; cart management, and a real-time admin dashboard with live order updates via Socket.IO.</span><br/><br/>
+      <code style="font-size:12px;">React · Express · Mongo · Socket.IO</code><br/><br/>
+      <a href="https://restro-order-new.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-8B5CF6?style=flat-square&logo=vercel&logoColor=white" alt="Live demo" /></a>
+      <a href="https://github.com/Ankitjha9732/RESTRO-ORDER-NEW"><img src="https://img.shields.io/badge/Code-18181b?style=flat-square&logo=github&logoColor=white" alt="Repository" /></a>
+    </td>
+  </tr>
+  <tr>
+    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;width:50%;">
+      <b>🧑‍🚀 Personal Portfolio</b>&nbsp;<span style="font-size:12px;">— <i>UI/UX showpiece</i></span><br/>
+      <span style="font-size:13px;">3D scenes (React Three Fiber), GSAP scroll animation, Lenis smooth scroll, custom cursor &amp; magnetic buttons — fully responsive.</span><br/><br/>
+      <code style="font-size:12px;">React · GSAP · Three.js · Tailwind</code><br/><br/>
+      <a href="https://ankit-portfolio-puce.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-8B5CF6?style=flat-square&logo=vercel&logoColor=white" alt="Live demo" /></a>
+      <a href="https://github.com/Ankitjha9732/ankit-portfolio"><img src="https://img.shields.io/badge/Code-18181b?style=flat-square&logo=github&logoColor=white" alt="Repository" /></a>
+    </td>
+    <td style="border:1px solid rgba(140,149,159,0.35);border-radius:12px;padding:18px;vertical-align:top;width:50%;">
+      <b>🎬 REEL-PROJ</b>&nbsp;<span style="font-size:12px;">— <i>Reels UI prototype</i></span><br/>
+      <span style="font-size:13px;">Interactive prototype of the Instagram Reels experience — like, comment, follow &amp; share interactions, built in vanilla JS.</span><br/><br/>
+      <code style="font-size:12px;">JavaScript · HTML · CSS</code><br/><br/>
+      <a href="https://reel-proj.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-8B5CF6?style=flat-square&logo=vercel&logoColor=white" alt="Live demo" /></a>
+      <a href="https://github.com/Ankitjha9732/REEL-PROJ"><img src="https://img.shields.io/badge/Code-18181b?style=flat-square&logo=github&logoColor=white" alt="Repository" /></a>
+    </td>
+  </tr>
+</table>
 
-Turn a full syllabus into an actionable plan: modules → topics → subtopics — with live progress, streaks, charts, and a GitHub-style heatmap. Progress is computed on the backend; JWT-secured with ownership checks.
-
-**Stack ·** React · Vite · Tailwind · Express · MongoDB · Mongoose · JWT
-
-<p align="center">
-<a href="https://github.com/Ankitjha9732/SYLLABUS-TRACKER"><img src="https://github-readme-stats.vercel.app/api/pin/?username=Ankitjha9732&repo=SYLLABUS-TRACKER&theme=radical&hide_border=true&show_icons=true" alt="Syllabus Tracker" /></a>
-</p>
-<p align="center">
-<a href="https://syllabus-tracker-beta.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-8B5CF6?style=flat-square&logo=vercel&logoColor=white" alt="Live demo" /></a>
-</p>
-
-### 🍽️ RestroOrder — *full-stack QR restaurant ordering*
-
-MERN restaurant platform: QR-based table ordering for customers and a real-time admin dashboard, with menu browsing, cart management, and live order status updates via Socket.IO.
-
-**Stack ·** React · Vite · Tailwind · Framer Motion · Express · MongoDB · Socket.IO
-
-<p align="center">
-<a href="https://github.com/Ankitjha9732/RESTRO-ORDER-NEW"><img src="https://github-readme-stats.vercel.app/api/pin/?username=Ankitjha9732&repo=RESTRO-ORDER-NEW&theme=radical&hide_border=true&show_icons=true" alt="RestroOrder" /></a>
-</p>
-<p align="center">
-<a href="https://restro-order-new.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-8B5CF6?style=flat-square&logo=vercel&logoColor=white" alt="Live demo" /></a>
-</p>
-
-### 🧑‍🚀 Personal Portfolio — *UI/UX showpiece*
-
-My design-first portfolio with 3D interactive scenes (React Three Fiber), GSAP scroll animations, Lenis smooth scrolling, custom cursor, and magnetic buttons — fully responsive.
-
-**Stack ·** React · Vite · Tailwind · GSAP · Three.js · React Three Fiber
-
-<p align="center">
-<a href="https://github.com/Ankitjha9732/ankit-portfolio"><img src="https://github-readme-stats.vercel.app/api/pin/?username=Ankitjha9732&repo=ankit-portfolio&theme=radical&hide_border=true&show_icons=true" alt="Personal Portfolio" /></a>
-</p>
-<p align="center">
-<a href="https://ankit-portfolio-puce.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-8B5CF6?style=flat-square&logo=vercel&logoColor=white" alt="Live demo" /></a>
-</p>
-
-### 🎬 Also Notable
-
-| Project | Description | Stack |
-|---------|-------------|-------|
-| [REEL-PROJ](https://github.com/Ankitjha9732/REEL-PROJ) | Interactive prototype of the Instagram Reels section — like, comment, follow & share UI | JavaScript |
-| [RESPONSIVE-WEBPAGE](https://github.com/Ankitjha9732/RESPONSIVE-WEBPAGE) | Responsive landing page with a componentized SCSS architecture | SCSS · HTML |
+*More:* [Responsive SCSS landing page](https://github.com/Ankitjha9732/RESPONSIVE-WEBPAGE) — componentized SCSS architecture
 
 ---
 

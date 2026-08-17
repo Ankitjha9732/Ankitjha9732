@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200" role="img" aria-label="Ankit Jha frontend pipeline: design to deploy">
+  <style>
+    .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 12px; font-weight: 600; fill: #e4e4e7; letter-spacing: 0.5px; }
+    .sub { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 9.5px; fill: #8b8b92; letter-spacing: 0.8px; }
+    .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 11px; fill: #6b6b73; }
+    .chip { fill: #18181b; }
+    .chipline { stroke: #3f3f46; }
+    .flowline { stroke: #3f3f46; }
+  </style>
+
+  <defs>
+    <path id="flow" d="M56 112 H664" />
+  </defs>
+
+  <!-- command center panel -->
+  <rect x="6" y="54" width="708" height="112" rx="14" fill="#000000" fill-opacity="0.045" stroke="#3f3f46" stroke-opacity="0.55" stroke-width="1" />
+  <text class="code" x="20" y="79">// frontend-pipeline -- design -&gt; react -&gt; api -&gt; db -&gt; deploy</text>
+
+  <!-- base flow line -->
+  <path d="M56 112 H664" class="flowline" stroke-width="2" stroke-linecap="round" fill="none" />
+
+  <!-- marching dashes -->
+  <path d="M56 112 H664" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" fill="none" stroke-dasharray="7 13">
+    <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="0.9s" repeatCount="indefinite" />
+  </path>
+
+  <!-- traveling node -->
+  <circle r="4" fill="#8b5cf6">
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.03;0.95;1" dur="4.3s" repeatCount="indefinite" />
+    <animateMotion dur="4.3s" repeatCount="indefinite" begin="0s">
+      <mpath href="#flow" />
+    </animateMotion>
+  </circle>
+
+  <!-- chip 0: Design -->
+  <g>
+    <circle cx="66" cy="112" r="27" fill="none" stroke="#8b5cf6" stroke-width="1.5">
+      <animate attributeName="opacity" values="0;0.9;0" keyTimes="0;0.5;1" dur="1s" begin="0s" repeatCount="indefinite" />
+    </circle>
+    <rect x="26" y="95" width="80" height="34" rx="9" class="chip" stroke="#3f3f46" stroke-width="1.5">
+      <animate attributeName="stroke" values="#3f3f46;#8b5cf6;#8b5cf6;#3f3f46" keyTimes="0;0.1;0.45;1" dur="5s" begin="0s" repeatCount="indefinite" />
+    </rect>
+    <text class="tag" x="66" y="116" text-anchor="middle">Design</text>
+    <text class="sub" x="66" y="144" text-anchor="middle">ui / ux</text>
+  </g>
+
+  <!-- chip 1: React -->
+  <g>
+    <circle cx="216" cy="112" r="27" fill="none" stroke="#8b5cf6" stroke-width="1.5">
+      <animate attributeName="opacity" values="0;0.9;0" keyTimes="0;0.5;1" dur="1s" begin="1s" repeatCount="indefinite" />
+    </circle>
+    <rect x="176" y="95" width="80" height="34" rx="9" class="chip" stroke="#3f3f46" stroke-width="1.5">
+      <animate attributeName="stroke" values="#3f3f46;#8b5cf6;#8b5cf6;#3f3f46" keyTimes="0;0.1;0.45;1" dur="5s" begin="1s" repeatCount="indefinite" />
+    </rect>
+    <text class="tag" x="216" y="116" text-anchor="middle">React</text>
+    <text class="sub" x="216" y="144" text-anchor="middle">components</text>
+  </g>
+
+  <!-- chip 2: API -->
+  <g>
+    <circle cx="366" cy="112" r="27" fill="none" stroke="#8b5cf6" stroke-width="1.5">
+      <animate attributeName="opacity" values="0;0.9;0" keyTimes="0;0.5;1" dur="1s" begin="2s" repeatCount="indefinite" />
+    </circle>
+    <rect x="326" y="95" width="80" height="34" rx="9" class="chip" stroke="#3f3f46" stroke-width="1.5">
+      <animate attributeName="stroke" values="#3f3f46;#8b5cf6;#8b5cf6;#3f3f46" keyTimes="0;0.1;0.45;1" dur="5s" begin="2s" repeatCount="indefinite" />
+    </rect>
+    <text class="tag" x="366" y="116" text-anchor="middle">API</text>
+    <text class="sub" x="366" y="144" text-anchor="middle">rest + jwt</text>
+  </g>
+
+  <!-- chip 3: Data -->
+  <g>
+    <circle cx="516" cy="112" r="27" fill="none" stroke="#8b5cf6" stroke-width="1.5">
+      <animate attributeName="opacity" values="0;0.9;0" keyTimes="0;0.5;1" dur="1s" begin="3s" repeatCount="indefinite" />
+    </circle>
+    <rect x="476" y="95" width="80" height="34" rx="9" class="chip" stroke="#3f3f46" stroke-width="1.5">
+      <animate attributeName="stroke" values="#3f3f46;#8b5cf6;#8b5cf6;#3f3f46" keyTimes="0;0.1;0.45;1" dur="5s" begin="3s" repeatCount="indefinite" />
+    </rect>
+    <text class="tag" x="516" y="116" text-anchor="middle">Data</text>
+    <text class="sub" x="516" y="144" text-anchor="middle">mongodb</text>
+  </g>
+
+  <!-- chip 4: Deploy -->
+  <g>
+    <circle cx="654" cy="112" r="27" fill="none" stroke="#8b5cf6" stroke-width="1.5">
+      <animate attributeName="opacity" values="0;0.9;0" keyTimes="0;0.5;1" dur="1s" begin="4s" repeatCount="indefinite" />
+    </circle>
+    <rect x="614" y="95" width="80" height="34" rx="9" class="chip" stroke="#3f3f46" stroke-width="1.5">
+      <animate attributeName="stroke" values="#3f3f46;#8b5cf6;#8b5cf6;#3f3f46" keyTimes="0;0.1;0.45;1" dur="5s" begin="4s" repeatCount="indefinite" />
+    </rect>
+    <text class="tag" x="654" y="116" text-anchor="middle">Deploy</text>
+    <text class="sub" x="654" y="144" text-anchor="middle">vercel / render</text>
+  </g>
+
+  <!-- footer signature -->
+  <text class="code" x="20" y="188">&lt;build&gt; :  ankit jha</text>
+</svg>

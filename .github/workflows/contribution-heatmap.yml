@@ -1,0 +1,35 @@
+name: Update contribution heatmap
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # Every day at midnight UTC
+  workflow_dispatch:        # Manual trigger
+  push:
+    paths:
+      - '.github/workflows/contribution-heatmap.yml'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate SVG
+        run: |
+          python .github/scripts/generate_heatmap.py
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/frontend-hero.svg
+          git diff --cached --quiet || git commit -m "chore: update contribution heatmap [skip ci]"
+          git push

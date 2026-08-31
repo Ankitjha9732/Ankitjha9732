@@ -79,10 +79,6 @@ def build_svg(contribs, total, active, streak):
     # Background
     o.append(f'  <rect width="{view_w}" height="{view_h}" rx="3" fill="url(#bg)"/>')
 
-    # Header section (top-left: total contributions)
-    o.append(f'  <text x="14" y="17" font-size="12" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">{total}</text>')
-    o.append(f'  <text x="14" y="30" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">contributions</text>')
-
     # Month labels - find first occurrence of each month in chronological order
     month_positions = {}
     for date_str in sorted_dates:

@@ -83,14 +83,14 @@ def build_svg(contribs, total, active, streak):
     o.append(f'  <text x="14" y="17" font-size="12" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">{total}</text>')
     o.append(f'  <text x="14" y="30" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">contributions</text>')
 
-    # Header section (top-right: streaks)
-    streak_label_x = view_w - 90
-    streak_count_x = view_w - 30
+    # Header section (top-right: days and streak separated horizontally)
+    days_label_x = view_w - 90   # "21 days" ends here
+    streak_label_x = view_w - 10  # "15 streak" ends here
 
-    o.append(f'  <text x="{streak_label_x}" y="17" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{active}</text>')
-    o.append(f'  <text x="{streak_label_x}" y="30" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">days</text>')
-    o.append(f'  <text x="{streak_count_x}" y="17" font-size="10" fill="#e6edf3" font-weight="600" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">{streak}</text>')
-    o.append(f'  <text x="{streak_count_x}" y="30" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">streak</text>')
+    o.append(f'  <text x="{days_label_x}" y="17" font-size="10" fill="#e6edf3" font-weight="600" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{active}</text>')
+    o.append(f'  <text x="{days_label_x}" y="30" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">days</text>')
+    o.append(f'  <text x="{streak_label_x}" y="17" font-size="10" fill="#e6edf3" font-weight="600" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{streak}</text>')
+    o.append(f'  <text x="{streak_label_x}" y="30" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">streak</text>')
 
     # Month labels - find first occurrence of each month in chronological order
     month_positions = {}
@@ -110,11 +110,11 @@ def build_svg(contribs, total, active, streak):
         x, month_num = month_positions[month_key]
         o.append(f'  <text x="{x}" y="{month_y}" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">{MONTHS[month_num-1]}</text>')
 
-    # Day labels (left side: Sun, Tue, Thu, Sat) - positioned to not overlap
+    # Day labels (left side: Sun, Tue, Thu, Sat) - centered on cell rows 0, 2, 4, 6
     day_labels = [('Sun', 0), ('Tue', 2), ('Thu', 4), ('Sat', 6)]
     for label, row_index in day_labels:
-        y = TOP_PAD + row_index * (CELL_SIZE + GAP) + CELL_SIZE - 1  # Align with cell bottom
-        o.append(f'  <text x="{LEFT_PAD - 4}" y="{y}" font-size="9" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{label}</text>')
+        y = TOP_PAD + row_index * (CELL_SIZE + GAP) + CELL_SIZE - 5  # Align with cell vertical center
+        o.append(f'  <text x="{LEFT_PAD - 6}" y="{y}" font-size="9" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{label}</text>')
 
     # Contribution grid cells
     for date_str in sorted_dates:

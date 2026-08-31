@@ -62,8 +62,8 @@ def build_svg(contribs, total, active, streak):
     grid_w = WEEKS * CELL_SIZE + (WEEKS - 1) * GAP
     grid_h = DAYS * CELL_SIZE + (DAYS - 1) * GAP
     view_w = LEFT_PAD + grid_w + RIGHT_PAD
-    # Increase bottom padding to fit grid (100 cells) + month labels + legend (4 rows + text)
-    view_h = TOP_PAD + grid_h + 50  # 50px bottom zone for month labels + legend
+    # 58px bottom zone: 20px gap + 10px month labels + 14px gap + 14px legend
+    view_h = TOP_PAD + grid_h + 58
 
     # Initialize SVG parts
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {view_w} {view_h}" width="{view_w}" height="{view_h}" role="img" aria-label="Contribution heatmap">']
@@ -105,7 +105,7 @@ def build_svg(contribs, total, active, streak):
             month_positions[month_key] = (x, dt.month)
 
     # Sort by year then month to get correct chronological order
-    month_y = TOP_PAD + grid_h + 16  # Month labels below grid
+    month_y = TOP_PAD + grid_h + 20  # Month labels below grid (20px gap)
     for month_key in sorted(month_positions.keys()):
         x, month_num = month_positions[month_key]
         o.append(f'  <text x="{x}" y="{month_y}" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">{MONTHS[month_num-1]}</text>')
@@ -137,7 +137,7 @@ def build_svg(contribs, total, active, streak):
             o.append(f'  <rect x="{x}" y="{y}" width="{CELL_SIZE}" height="{CELL_SIZE}" rx="2" fill="#8b5cf6" opacity="{opacity}"{extra_attrs}/>')
 
     # Legend (bottom-left) - matches GitHub's exact legend
-    legend_y = TOP_PAD + grid_h + 34  # Below month labels
+    legend_y = TOP_PAD + grid_h + 42  # Below month labels with proper spacing
     legend_x = LEFT_PAD
 
     # "Less" label

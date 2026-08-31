@@ -83,15 +83,6 @@ def build_svg(contribs, total, active, streak):
     o.append(f'  <text x="14" y="17" font-size="12" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">{total}</text>')
     o.append(f'  <text x="14" y="30" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">contributions</text>')
 
-    # Header section (top-right: days and streak separated horizontally)
-    days_label_x = view_w - 90   # "21 days" ends here
-    streak_label_x = view_w - 10  # "15 streak" ends here
-
-    o.append(f'  <text x="{days_label_x}" y="17" font-size="10" fill="#e6edf3" font-weight="600" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{active}</text>')
-    o.append(f'  <text x="{days_label_x}" y="30" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">days</text>')
-    o.append(f'  <text x="{streak_label_x}" y="17" font-size="10" fill="#e6edf3" font-weight="600" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{streak}</text>')
-    o.append(f'  <text x="{streak_label_x}" y="30" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">streak</text>')
-
     # Month labels - find first occurrence of each month in chronological order
     month_positions = {}
     for date_str in sorted_dates:

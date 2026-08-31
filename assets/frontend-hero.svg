@@ -8,10 +8,6 @@
   <rect width="718" height="168" rx="3" fill="url(#bg)"/>
   <text x="14" y="17" font-size="12" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">83</text>
   <text x="14" y="30" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">contributions</text>
-  <text x="628" y="17" font-size="10" fill="#e6edf3" font-weight="600" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">21</text>
-  <text x="628" y="30" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">days</text>
-  <text x="708" y="17" font-size="10" fill="#e6edf3" font-weight="600" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">15</text>
-  <text x="708" y="30" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">streak</text>
   <text x="77" y="130" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">Sep</text>
   <text x="125" y="130" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">Oct</text>
   <text x="173" y="130" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">Nov</text>

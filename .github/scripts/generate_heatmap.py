@@ -14,7 +14,7 @@ WEEKS = 53      # 53 weeks in GitHub's contribution calendar
 DAYS = 7        # Sunday to Saturday
 TOP_PAD = 28    # Space for header text
 LEFT_PAD = 72   # Space for weekday labels + padding
-BOTTOM_PAD = 26 # Space for month labels + padding
+BOTTOM_PAD = 44 # Space for month labels + legend + padding
 RIGHT_PAD = 12  # Right padding
 
 MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -62,7 +62,8 @@ def build_svg(contribs, total, active, streak):
     grid_w = WEEKS * CELL_SIZE + (WEEKS - 1) * GAP
     grid_h = DAYS * CELL_SIZE + (DAYS - 1) * GAP
     view_w = LEFT_PAD + grid_w + RIGHT_PAD
-    view_h = TOP_PAD + grid_h + BOTTOM_PAD
+    # Increase bottom padding to fit grid (100 cells) + month labels + legend (4 rows + text)
+    view_h = TOP_PAD + grid_h + 50  # 50px bottom zone for month labels + legend
 
     # Initialize SVG parts
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {view_w} {view_h}" width="{view_w}" height="{view_h}" role="img" aria-label="Contribution heatmap">']
@@ -79,37 +80,40 @@ def build_svg(contribs, total, active, streak):
     o.append(f'  <rect width="{view_w}" height="{view_h}" rx="3" fill="url(#bg)"/>')
 
     # Header section (top-left: total contributions)
-    o.append(f'  <text x="14" y="20" font-size="12" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">{total}</text>')
-    o.append(f'  <text x="14" y="34" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">contributions</text>')
+    o.append(f'  <text x="14" y="17" font-size="12" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">{total}</text>')
+    o.append(f'  <text x="14" y="30" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">contributions</text>')
 
     # Header section (top-right: streaks)
-    # Calculate X positions for right-aligned text
     streak_label_x = view_w - 90
     streak_count_x = view_w - 30
 
-    o.append(f'  <text x="{streak_label_x}" y="20" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{active}</text>')
-    o.append(f'  <text x="{streak_label_x}" y="34" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">days</text>')
-    o.append(f'  <text x="{streak_count_x}" y="20" font-size="10" fill="#e6edf3" font-weight="600" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">{streak}</text>')
-    o.append(f'  <text x="{streak_count_x}" y="34" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">streak</text>')
+    o.append(f'  <text x="{streak_label_x}" y="17" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{active}</text>')
+    o.append(f'  <text x="{streak_label_x}" y="30" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">days</text>')
+    o.append(f'  <text x="{streak_count_x}" y="17" font-size="10" fill="#e6edf3" font-weight="600" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">{streak}</text>')
+    o.append(f'  <text x="{streak_count_x}" y="30" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">streak</text>')
 
-    # Month labels (positioned under the grid, centered above first day of each month)
+    # Month labels - find first occurrence of each month in chronological order
     month_positions = {}
     for date_str in sorted_dates:
         dt = datetime.strptime(date_str, '%Y-%m-%d')
-        if dt.day <= 7 and dt.month not in month_positions:  # First week of month
+        # Create a key that includes year to handle year-wrapping correctly
+        month_key = (dt.year, dt.month)
+        if dt.day <= 7 and month_key not in month_positions:
             days_from_start = (dt - grid_start).days
             week_num = days_from_start // 7
             x = LEFT_PAD + week_num * (CELL_SIZE + GAP) + CELL_SIZE // 2
-            month_positions[dt.month] = x
+            month_positions[month_key] = (x, dt.month)
 
-    for month_num in sorted(month_positions.keys()):
-        x = month_positions[month_num]
-        o.append(f'  <text x="{x}" y="{TOP_PAD + grid_h + 18}" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">{MONTHS[month_num-1]}</text>')
+    # Sort by year then month to get correct chronological order
+    month_y = TOP_PAD + grid_h + 16  # Month labels below grid
+    for month_key in sorted(month_positions.keys()):
+        x, month_num = month_positions[month_key]
+        o.append(f'  <text x="{x}" y="{month_y}" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">{MONTHS[month_num-1]}</text>')
 
-    # Day labels (left side: Sun, Tue, Thu, Sat)
+    # Day labels (left side: Sun, Tue, Thu, Sat) - positioned to not overlap
     day_labels = [('Sun', 0), ('Tue', 2), ('Thu', 4), ('Sat', 6)]
     for label, row_index in day_labels:
-        y = TOP_PAD + row_index * (CELL_SIZE + GAP) + CELL_SIZE - 2
+        y = TOP_PAD + row_index * (CELL_SIZE + GAP) + CELL_SIZE - 1  # Align with cell bottom
         o.append(f'  <text x="{LEFT_PAD - 4}" y="{y}" font-size="9" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{label}</text>')
 
     # Contribution grid cells
@@ -133,30 +137,25 @@ def build_svg(contribs, total, active, streak):
             o.append(f'  <rect x="{x}" y="{y}" width="{CELL_SIZE}" height="{CELL_SIZE}" rx="2" fill="#8b5cf6" opacity="{opacity}"{extra_attrs}/>')
 
     # Legend (bottom-left) - matches GitHub's exact legend
+    legend_y = TOP_PAD + grid_h + 34  # Below month labels
     legend_x = LEFT_PAD
-    legend_y = TOP_PAD + grid_h + 12
+
+    # "Less" label
     o.append(f'  <text x="{legend_x}" y="{legend_y}" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">Less</text>')
 
     # Legend squares (0 to 4)
     legend_square_size = 9
     legend_square_spacing = 12
     legend_start_x = legend_x + 32
+    square_y = legend_y - 8
 
     for i, opacity in enumerate([0.0, 0.11, 0.31, 0.54, 1.0]):
         square_x = legend_start_x + i * legend_square_spacing
-        square_y = legend_y - 9
         o.append(f'  <rect x="{square_x}" y="{square_y}" width="{legend_square_size}" height="{legend_square_size}" rx="2" fill="#8b5cf6" opacity="{opacity}"/>')
 
-        # Add numeric labels under squares (0,1,2,3,4+)
-        label_x = square_x + legend_square_size // 2
-        label_y = legend_y + 14
-        if i < 4:
-            label_text = str(i)
-        else:
-            label_text = "4+"
-        o.append(f'  <text x="{label_x}" y="{label_y}" font-size="9" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">{label_text}</text>')
-
-    o.append(f'  <text x="{legend_start_x + 4 * legend_square_spacing + 8}" y="{legend_y}" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">More</text>')
+    # "More" label (after squares)
+    more_x = legend_start_x + 4 * legend_square_spacing + 10
+    o.append(f'  <text x="{more_x}" y="{legend_y}" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">More</text>')
 
     o.append('</svg>')
     return '\n'.join(o)

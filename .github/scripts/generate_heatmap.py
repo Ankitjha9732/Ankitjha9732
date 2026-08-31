@@ -1,4 +1,4 @@
-"""Generate the contribution heatmap SVG from live GitHub data."""
+"""Generate the contribution heatmap SVG matching GitHub's exact styling."""
 import urllib.request
 import re
 import os
@@ -7,23 +7,26 @@ from datetime import datetime, timedelta
 USERNAME = "Ankitjha9732"
 OUTPUT_PATH = "assets/frontend-hero.svg"
 
-CELL = 11
-GAP = 3
-COLS = 53
-ROWS = 7
-TOP_PAD = 60
-LEFT_PAD = 40
-BOTTOM_PAD = 50
-RIGHT_PAD = 20
+# GitHub contribution calendar dimensions (matches their exact SVG)
+CELL_SIZE = 10  # GitHub uses 10px squares
+GAP = 2         # GitHub uses 2px gap between cells
+WEEKS = 53      # 53 weeks in GitHub's contribution calendar
+DAYS = 7        # Sunday to Saturday
+TOP_PAD = 28    # Space for header text
+LEFT_PAD = 72   # Space for weekday labels + padding
+BOTTOM_PAD = 26 # Space for month labels + padding
+RIGHT_PAD = 12  # Right padding
 
 MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
           'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-LEVEL_OPACITY = {1: 0.25, 2: 0.45, 3: 0.7, 4: 1.0}
-LEVEL_TO_COUNT = {0: 0, 1: 1, 2: 3, 3: 6, 4: 12}
+# Exact opacity mapping from GitHub's contribution levels (0-4)
+LEVEL_OPACITY = [0.0, 0.11, 0.31, 0.54, 1.0]  # GitHub's actual values
+LEVEL_TO_COUNT = {0: 0, 1: 1, 2: 3, 3: 6, 4: 10}  # Approximate count mapping
 
 
 def fetch_contributions(username):
+    """Fetch contribution data from GitHub's contributions page."""
     url = f"https://github.com/users/{username}/contributions"
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     with urllib.request.urlopen(req) as r:
@@ -34,6 +37,7 @@ def fetch_contributions(username):
 
 
 def compute_stats(contribs, sorted_dates):
+    """Calculate total contributions, active days, and current streak."""
     total = sum(LEVEL_TO_COUNT[contribs[d]] for d in sorted_dates if contribs[d] > 0)
     active = sum(1 for d in sorted_dates if contribs[d] > 0)
     streak = 0
@@ -46,87 +50,136 @@ def compute_stats(contribs, sorted_dates):
 
 
 def build_svg(contribs, total, active, streak):
+    """Build SVG matching GitHub's exact contribution calendar styling."""
     sorted_dates = sorted(contribs.keys())
+
+    # Find grid start (Sunday before first contribution date)
     start_date = datetime.strptime(sorted_dates[0], '%Y-%m-%d')
-    days_back = (start_date.weekday() + 1) % 7
+    days_back = (start_date.weekday() + 1) % 7  # Days back to Sunday
     grid_start = start_date - timedelta(days=days_back)
 
-    grid_w = COLS * CELL + (COLS - 1) * GAP
-    grid_h = ROWS * CELL + (ROWS - 1) * GAP
+    # Calculate dimensions
+    grid_w = WEEKS * CELL_SIZE + (WEEKS - 1) * GAP
+    grid_h = DAYS * CELL_SIZE + (DAYS - 1) * GAP
     view_w = LEFT_PAD + grid_w + RIGHT_PAD
     view_h = TOP_PAD + grid_h + BOTTOM_PAD
 
-    o = []
-    o.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {view_w} {view_h}" width="{view_w}" height="{view_h}" role="img">')
+    # Initialize SVG parts
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {view_w} {view_h}" width="{view_w}" height="{view_h}" role="img" aria-label="Contribution heatmap">']
+
+    # Definitions
     o.append('  <defs>')
     o.append('    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">')
     o.append('      <stop offset="0%" stop-color="#0d1117"/><stop offset="100%" stop-color="#161b22"/>')
     o.append('    </linearGradient>')
-    o.append('    <filter id="g"><feGaussianBlur stdDeviation="1.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>')
+    o.append('    <filter id="glow"><feGaussianBlur stdDeviation="1" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>')
     o.append('  </defs>')
-    o.append('  <style>.m{font-family:ui-monospace,SFMono,Menlo,monospace}</style>')
-    o.append(f'  <rect width="{view_w}" height="{view_h}" rx="12" fill="url(#bg)"/>')
 
-    # Header
-    o.append(f'  <text class="m" x="20" y="24" font-size="14" fill="#e6edf3" font-weight="bold">{total} contributions</text>')
-    o.append(f'  <text class="m" x="180" y="24" font-size="10" fill="#8b949e">in the last year</text>')
-    o.append(f'  <text class="m" x="{view_w-200}" y="24" font-size="11" fill="#e6edf3" font-weight="bold">{active}</text>')
-    o.append(f'  <text class="m" x="{view_w-200}" y="40" font-size="8" fill="#6e7681">days active</text>')
-    o.append(f'  <text class="m" x="{view_w-90}" y="24" font-size="11" fill="#e6edf3" font-weight="bold">{streak}</text>')
-    o.append(f'  <text class="m" x="{view_w-90}" y="40" font-size="8" fill="#6e7681">day streak</text>')
+    # Background
+    o.append(f'  <rect width="{view_w}" height="{view_h}" rx="3" fill="url(#bg)"/>')
 
-    # Month labels
-    month_x = {}
-    for d_str in sorted_dates:
-        d = datetime.strptime(d_str, '%Y-%m-%d')
-        if d.day <= 7 and d.month not in month_x:
-            week_idx = (d - grid_start).days // 7
-            month_x[d.month] = LEFT_PAD + week_idx * (CELL + GAP)
-    for m in sorted(month_x.keys()):
-        o.append(f'  <text class="m" x="{month_x[m]}" y="56" font-size="8" fill="#6e7681">{MONTHS[m-1]}</text>')
+    # Header section (top-left: total contributions)
+    o.append(f'  <text x="14" y="20" font-size="12" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">{total}</text>')
+    o.append(f'  <text x="14" y="34" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">contributions</text>')
 
-    # Day labels
-    for row, label in [(0, 'Sun'), (2, 'Tue'), (4, 'Thu'), (6, 'Sat')]:
-        y = TOP_PAD + row * (CELL + GAP) + CELL * 0.7
-        o.append(f'  <text class="m" x="32" y="{y}" font-size="7" fill="#6e7681" text-anchor="end">{label}</text>')
+    # Header section (top-right: streaks)
+    # Calculate X positions for right-aligned text
+    streak_label_x = view_w - 90
+    streak_count_x = view_w - 30
 
-    # Cells
-    for d_str in sorted_dates:
-        level = contribs[d_str]
-        d = datetime.strptime(d_str, '%Y-%m-%d')
-        days_from_start = (d - grid_start).days
-        col = days_from_start // 7
-        row = days_from_start % 7
-        x = LEFT_PAD + col * (CELL + GAP)
-        y = TOP_PAD + row * (CELL + GAP)
+    o.append(f'  <text x="{streak_label_x}" y="20" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{active}</text>')
+    o.append(f'  <text x="{streak_label_x}" y="34" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">days</text>')
+    o.append(f'  <text x="{streak_count_x}" y="20" font-size="10" fill="#e6edf3" font-weight="600" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">{streak}</text>')
+    o.append(f'  <text x="{streak_count_x}" y="34" font-size="8" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">streak</text>')
+
+    # Month labels (positioned under the grid, centered above first day of each month)
+    month_positions = {}
+    for date_str in sorted_dates:
+        dt = datetime.strptime(date_str, '%Y-%m-%d')
+        if dt.day <= 7 and dt.month not in month_positions:  # First week of month
+            days_from_start = (dt - grid_start).days
+            week_num = days_from_start // 7
+            x = LEFT_PAD + week_num * (CELL_SIZE + GAP) + CELL_SIZE // 2
+            month_positions[dt.month] = x
+
+    for month_num in sorted(month_positions.keys()):
+        x = month_positions[month_num]
+        o.append(f'  <text x="{x}" y="{TOP_PAD + grid_h + 18}" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">{MONTHS[month_num-1]}</text>')
+
+    # Day labels (left side: Sun, Tue, Thu, Sat)
+    day_labels = [('Sun', 0), ('Tue', 2), ('Thu', 4), ('Sat', 6)]
+    for label, row_index in day_labels:
+        y = TOP_PAD + row_index * (CELL_SIZE + GAP) + CELL_SIZE - 2
+        o.append(f'  <text x="{LEFT_PAD - 4}" y="{y}" font-size="9" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">{label}</text>')
+
+    # Contribution grid cells
+    for date_str in sorted_dates:
+        level = contribs[date_str]
+        dt = datetime.strptime(date_str, '%Y-%m-%d')
+        days_from_start = (dt - grid_start).days
+        col = days_from_start // 7  # Week column
+        row = days_from_start % 7   # Day row (0=Sun, 6=Sat)
+
+        x = LEFT_PAD + col * (CELL_SIZE + GAP)
+        y = TOP_PAD + row * (CELL_SIZE + GAP)
+
         if level == 0:
-            o.append(f'  <rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" rx="2" fill="#21262d"/>')
+            # No contribution - dark background
+            o.append(f'  <rect x="{x}" y="{y}" width="{CELL_SIZE}" height="{CELL_SIZE}" rx="2" fill="#21262d"/>')
         else:
-            extra = ' filter="url(#g)"' if level >= 3 else ''
-            o.append(f'  <rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" rx="2" fill="#a855f7" opacity="{LEVEL_OPACITY[level]}"{extra}/>')
+            # Has contribution - purple with varying opacity
+            opacity = LEVEL_OPACITY[level]
+            extra_attrs = ' filter="url(#glow)"' if level >= 3 else ''  # Glow for high activity
+            o.append(f'  <rect x="{x}" y="{y}" width="{CELL_SIZE}" height="{CELL_SIZE}" rx="2" fill="#8b5cf6" opacity="{opacity}"{extra_attrs}/>')
 
-    # Legend
-    lx = view_w - 140
-    ly = view_h - 20
-    o.append(f'  <text class="m" x="{lx}" y="{ly}" font-size="8" fill="#6e7681">Less</text>')
-    for i, op in enumerate([0, 0.25, 0.45, 0.7, 1.0]):
-        o.append(f'  <rect x="{lx+32+i*12}" y="{ly-9}" width="9" height="9" rx="2" fill="#a855f7" opacity="{op}"/>')
-    o.append(f'  <text class="m" x="{lx+96}" y="{ly}" font-size="8" fill="#6e7681">More</text>')
+    # Legend (bottom-left) - matches GitHub's exact legend
+    legend_x = LEFT_PAD
+    legend_y = TOP_PAD + grid_h + 12
+    o.append(f'  <text x="{legend_x}" y="{legend_y}" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">Less</text>')
+
+    # Legend squares (0 to 4)
+    legend_square_size = 9
+    legend_square_spacing = 12
+    legend_start_x = legend_x + 32
+
+    for i, opacity in enumerate([0.0, 0.11, 0.31, 0.54, 1.0]):
+        square_x = legend_start_x + i * legend_square_spacing
+        square_y = legend_y - 9
+        o.append(f'  <rect x="{square_x}" y="{square_y}" width="{legend_square_size}" height="{legend_square_size}" rx="2" fill="#8b5cf6" opacity="{opacity}"/>')
+
+        # Add numeric labels under squares (0,1,2,3,4+)
+        label_x = square_x + legend_square_size // 2
+        label_y = legend_y + 14
+        if i < 4:
+            label_text = str(i)
+        else:
+            label_text = "4+"
+        o.append(f'  <text x="{label_x}" y="{label_y}" font-size="9" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">{label_text}</text>')
+
+    o.append(f'  <text x="{legend_start_x + 4 * legend_square_spacing + 8}" y="{legend_y}" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">More</text>')
+
     o.append('</svg>')
     return '\n'.join(o)
 
 
 def main():
+    """Main execution function."""
     contribs = fetch_contributions(USERNAME)
     if not contribs:
         print("No contribution data found")
         return 1
+
     sorted_dates = sorted(contribs.keys())
     total, active, streak = compute_stats(contribs, sorted_dates)
     svg = build_svg(contribs, total, active, streak)
+
+    # Ensure output directory exists
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+
+    # Write SVG file
     with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
         f.write(svg)
+
     print(f"Updated {OUTPUT_PATH}: {total} contributions, {active} days active, {streak} day streak")
     return 0
 

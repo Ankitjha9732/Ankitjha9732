@@ -7,11 +7,11 @@
   </defs>
   <style>.m{font-family:ui-monospace,SFMono,Menlo,monospace}</style>
   <rect width="799" height="205" rx="12" fill="url(#bg)"/>
-  <text class="m" x="20" y="24" font-size="14" fill="#e6edf3" font-weight="bold">87 contributions</text>
+  <text class="m" x="20" y="24" font-size="14" fill="#e6edf3" font-weight="bold">84 contributions</text>
   <text class="m" x="180" y="24" font-size="10" fill="#8b949e">in the last year</text>
   <text class="m" x="599" y="24" font-size="11" fill="#e6edf3" font-weight="bold">20</text>
   <text class="m" x="599" y="40" font-size="8" fill="#6e7681">days active</text>
-  <text class="m" x="709" y="24" font-size="11" fill="#e6edf3" font-weight="bold">14</text>
+  <text class="m" x="709" y="24" font-size="11" fill="#e6edf3" font-weight="bold">0</text>
   <text class="m" x="709" y="40" font-size="8" fill="#6e7681">day streak</text>
   <text class="m" x="278" y="56" font-size="8" fill="#6e7681">Jan</text>
   <text class="m" x="348" y="56" font-size="8" fill="#6e7681">Feb</text>
@@ -355,7 +355,7 @@
   <rect x="684" y="74" width="11" height="11" rx="2" fill="#21262d"/>
   <rect x="684" y="88" width="11" height="11" rx="2" fill="#21262d"/>
   <rect x="684" y="102" width="11" height="11" rx="2" fill="#21262d"/>
-  <rect x="684" y="116" width="11" height="11" rx="2" fill="#a855f7" opacity="1.0" filter="url(#g)"/>
+  <rect x="684" y="116" width="11" height="11" rx="2" fill="#a855f7" opacity="0.7" filter="url(#g)"/>
   <rect x="684" y="130" width="11" height="11" rx="2" fill="#a855f7" opacity="0.45"/>
   <rect x="684" y="144" width="11" height="11" rx="2" fill="#21262d"/>
   <rect x="698" y="60" width="11" height="11" rx="2" fill="#a855f7" opacity="0.45"/>
@@ -390,10 +390,11 @@
   <rect x="754" y="74" width="11" height="11" rx="2" fill="#a855f7" opacity="0.45"/>
   <rect x="754" y="88" width="11" height="11" rx="2" fill="#a855f7" opacity="0.45"/>
   <rect x="754" y="102" width="11" height="11" rx="2" fill="#a855f7" opacity="0.45"/>
-  <rect x="754" y="116" width="11" height="11" rx="2" fill="#a855f7" opacity="1.0" filter="url(#g)"/>
+  <rect x="754" y="116" width="11" height="11" rx="2" fill="#a855f7" opacity="0.7" filter="url(#g)"/>
   <rect x="754" y="130" width="11" height="11" rx="2" fill="#a855f7" opacity="0.45"/>
   <rect x="754" y="144" width="11" height="11" rx="2" fill="#a855f7" opacity="0.45"/>
-  <rect x="768" y="60" width="11" height="11" rx="2" fill="#a855f7" opacity="0.45"/>
+  <rect x="768" y="60" width="11" height="11" rx="2" fill="#a855f7" opacity="1.0" filter="url(#g)"/>
+  <rect x="768" y="74" width="11" height="11" rx="2" fill="#21262d"/>
   <text class="m" x="659" y="185" font-size="8" fill="#6e7681">Less</text>
   <rect x="691" y="176" width="9" height="9" rx="2" fill="#a855f7" opacity="0"/>
   <rect x="703" y="176" width="9" height="9" rx="2" fill="#a855f7" opacity="0.25"/>

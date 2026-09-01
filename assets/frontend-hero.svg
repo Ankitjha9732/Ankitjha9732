@@ -18,6 +18,7 @@
   <text x="545" y="130" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">Jun</text>
   <text x="593" y="130" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">Jul</text>
   <text x="641" y="130" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">Aug</text>
+  <text x="701" y="130" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="middle">Sep</text>
   <text x="66" y="33" font-size="9" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">Sun</text>
   <text x="66" y="57" font-size="9" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">Tue</text>
   <text x="66" y="81" font-size="9" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji" text-anchor="end">Thu</text>
@@ -388,6 +389,7 @@
   <rect x="684" y="100" width="10" height="10" rx="2" fill="#8b5cf6" opacity="0.31"/>
   <rect x="696" y="28" width="10" height="10" rx="2" fill="#8b5cf6" opacity="1.0" filter="url(#glow)"/>
   <rect x="696" y="40" width="10" height="10" rx="2" fill="#8b5cf6" opacity="0.31"/>
+  <rect x="696" y="52" width="10" height="10" rx="2" fill="#8b5cf6" opacity="0.31"/>
   <text x="72" y="152" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">Less</text>
   <rect x="104" y="144" width="9" height="9" rx="2" fill="#8b5cf6" opacity="0.0"/>
   <rect x="116" y="144" width="9" height="9" rx="2" fill="#8b5cf6" opacity="0.11"/>

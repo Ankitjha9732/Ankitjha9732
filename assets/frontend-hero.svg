@@ -390,7 +390,8 @@
   <rect x="696" y="28" width="10" height="10" rx="2" fill="#8b5cf6" opacity="1.0" filter="url(#glow)"/>
   <rect x="696" y="40" width="10" height="10" rx="2" fill="#8b5cf6" opacity="0.31"/>
   <rect x="696" y="52" width="10" height="10" rx="2" fill="#8b5cf6" opacity="0.54" filter="url(#glow)"/>
-  <rect x="696" y="64" width="10" height="10" rx="2" fill="#21262d"/>
+  <rect x="696" y="64" width="10" height="10" rx="2" fill="#8b5cf6" opacity="0.31"/>
+  <rect x="696" y="76" width="10" height="10" rx="2" fill="#21262d"/>
   <text x="72" y="152" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji">Less</text>
   <rect x="104" y="144" width="9" height="9" rx="2" fill="#8b5cf6" opacity="0.0"/>
   <rect x="116" y="144" width="9" height="9" rx="2" fill="#8b5cf6" opacity="0.11"/>
